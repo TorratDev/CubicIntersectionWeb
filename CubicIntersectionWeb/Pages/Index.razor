@@ -8,12 +8,6 @@
 Welcome to your new app.
 @page "/cube"
 
-<select @bind="CubeSize">
-    <option value="50">Small</option>
-    <option value="100">Medium</option>
-    <option value="150">Large</option>
-</select>
-
 <div>
     <input type="range" @bind-value="@CubeSize" min="1" max="10"/>
     <br/>
@@ -25,18 +19,18 @@ Welcome to your new app.
 <SurveyPrompt Title="How is Blazor working for you?"/>
 
 @code {
-    private int CubeSize { get; set; } = 5;
-    private int CubeCenter { get; set; } = 0;
+    private double CubeSize { get; set; } = 1;
+    private double CubeCenter { get; set; } = 0.75;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await JSRuntime.InvokeVoidAsync("drawCube", CubeSize, CubeCenter);
+            await JSRuntime.InvokeVoidAsync("setup", CubeSize, CubeCenter);
         }
         else
         {
-            await JSRuntime.InvokeVoidAsync("redrawCube", CubeSize, CubeCenter);
+            await JSRuntime.InvokeVoidAsync("updateCube", CubeSize, CubeCenter);
         }
     }
 
