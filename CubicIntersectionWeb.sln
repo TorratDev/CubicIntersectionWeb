@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubicIntersectionWeb", "CubicIntersectionWeb\CubicIntersectionWeb.csproj", "{C0E29CF5-160D-4186-A479-6A7CD4E5179B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0E29CF5-160D-4186-A479-6A7CD4E5179B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0E29CF5-160D-4186-A479-6A7CD4E5179B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0E29CF5-160D-4186-A479-6A7CD4E5179B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0E29CF5-160D-4186-A479-6A7CD4E5179B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
