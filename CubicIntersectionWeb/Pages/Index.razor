@@ -1,9 +1,43 @@
-﻿@page "/"
+﻿@inject IJSRuntime JSRuntime
+@page "/"
 
 <PageTitle>Index</PageTitle>
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+@page "/cube"
+
+<select @bind="CubeSize">
+    <option value="50">Small</option>
+    <option value="100">Medium</option>
+    <option value="150">Large</option>
+</select>
+
+<div>
+    <input type="range" @bind-value="@CubeSize" min="1" max="10"/>
+    <br/>
+    <input type="range" @bind-value="@CubeCenter" min="-5" max="5"/>
+    <br/>
+    <canvas id="myCanvas"></canvas>
+</div>
 
 <SurveyPrompt Title="How is Blazor working for you?"/>
+
+@code {
+    private int CubeSize { get; set; } = 5;
+    private int CubeCenter { get; set; } = 0;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("drawCube", CubeSize, CubeCenter);
+        }
+        else
+        {
+            await JSRuntime.InvokeVoidAsync("redrawCube", CubeSize, CubeCenter);
+        }
+    }
+
+}
