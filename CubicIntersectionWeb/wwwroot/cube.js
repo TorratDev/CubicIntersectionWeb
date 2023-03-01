@@ -34,32 +34,16 @@ function setup() {
     // create a wireframe object for the cube
     cube1 = new THREE.LineSegments(wireframeGeometry, wireframeMaterial);
     cube1.computeLineDistances();
-
-    // create a cube mesh
-    const material = new THREE.MeshBasicMaterial({color: 0xffffff, transparent: true, opacity: 0.1});
-
-    // cube1 = new THREE.Mesh(geometry, material);
-    cube1.position.set(center, -center, 0);
-    // add the wireframe to the cube
-    // cube1.add(wireframe);
+    cube1.position.set(center, center, 0);
     scene.add(cube1);
 
-
-    const geometry2 = new THREE.BoxGeometry(size, size, size);
-    cube2 = new THREE.Mesh(geometry2, material.clone()); // clone the material so we can adjust it for the second cube
-    cube2.material.color.set(0xff4d4d); // change the color of the material for the second cube
+    cube2 = new THREE.LineSegments(wireframeGeometry, wireframeMaterial);
+    cube2.computeLineDistances();
     cube2.position.set(-center, center, 0);
     scene.add(cube2);
 
     function animate() {
         requestAnimationFrame(animate);
-
-        cube1.rotation.x += 0.01;
-        cube1.rotation.y += 0.01;
-
-        cube2.rotation.x -= 0.01;
-        cube2.rotation.y -= 0.01;
-
         renderer.render(scene, camera);
     }
 
