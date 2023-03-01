@@ -25,30 +25,23 @@ function setup() {
     const center = 0.75;
     // create a cube geometry
     const geometry = new THREE.BoxGeometry(size, size, size);
-
     // create a material for the wireframe
-    const wireframeMaterial = new THREE.LineDashedMaterial({
-        color: 0x000000,
-        linewidth: 1,
-        scale: 1,
-        dashSize: 5,
-        gapSize: 3,
-    });
+    const wireframeMaterial = new THREE.LineDashedMaterial({color: 0xffaa00, dashSize: 0.1, gapSize: 0.1});
 
     // create a wireframe geometry for the cube
     const wireframeGeometry = new THREE.EdgesGeometry(geometry);
 
     // create a wireframe object for the cube
-    const wireframe = new THREE.LineSegments(wireframeGeometry, wireframeMaterial);
-    wireframe.computeLineDistances();
+    cube1 = new THREE.LineSegments(wireframeGeometry, wireframeMaterial);
+    cube1.computeLineDistances();
 
     // create a cube mesh
-    const material = new THREE.MeshBasicMaterial({color: 0xffffff, transparent: true, opacity: 0.3, wireframe: true});
+    const material = new THREE.MeshBasicMaterial({color: 0xffffff, transparent: true, opacity: 0.1});
 
-    cube1 = new THREE.Mesh(geometry, material);
+    // cube1 = new THREE.Mesh(geometry, material);
     cube1.position.set(center, -center, 0);
     // add the wireframe to the cube
-    cube1.add(wireframe);
+    // cube1.add(wireframe);
     scene.add(cube1);
 
 
