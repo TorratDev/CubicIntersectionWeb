@@ -6,19 +6,34 @@
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
-@page "/cube"
 
 <div class="grid-container">
-    <div class="cube1 grid-item">
-        <input type="range" @bind-value="@CubicSize" min="1" max="10"/>
+    <div class="grid-item">
+        <input type="range" @bind-value="@Cubic1.Dimension.X" min="1" max="10"/>
         <br/>
-        <input type="range" @bind-value="@CubicCenter" min="-5" max="5"/>
+        <input type="range" @bind-value="@Cubic1.Dimension.Y" min="1" max="10"/>
+        <br/>
+        <input type="range" @bind-value="@Cubic1.Dimension.Z" min="1" max="10"/>
+        <br/>
+        <input type="range" @bind-value="@Cubic1.Center.X" min="-5" max="5"/>
+        <br/>
+        <input type="range" @bind-value="@Cubic1.Center.Y" min="-5" max="5"/>
+        <br/>
+        <input type="range" @bind-value="@Cubic1.Center.Z" min="-5" max="5"/>
         <br/>
     </div>
-    <div class="cube2 grid-item">
-        <input type="range" @bind-value="@CubicSize2" min="1" max="10"/>
+    <div class="grid-item">
+        <input type="range" @bind-value="@Cubic2.Dimension.X" min="1" max="10"/>
         <br/>
-        <input type="range" @bind-value="@CubicCenter2" min="-5" max="5"/>
+        <input type="range" @bind-value="@Cubic2.Dimension.Y" min="1" max="10"/>
+        <br/>
+        <input type="range" @bind-value="@Cubic2.Dimension.Z" min="1" max="10"/>
+        <br/>
+        <input type="range" @bind-value="@Cubic2.Center.X" min="-5" max="5"/>
+        <br/>
+        <input type="range" @bind-value="@Cubic2.Center.Y" min="-5" max="5"/>
+        <br/>
+        <input type="range" @bind-value="@Cubic2.Center.Z" min="-5" max="5"/>
         <br/>
     </div>
     <canvas id="myCanvas"></canvas>
