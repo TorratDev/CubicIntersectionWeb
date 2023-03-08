@@ -1,3 +1,6 @@
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
+
 namespace CubicIntersectionWeb.Pages;
 
 public sealed class Cubic

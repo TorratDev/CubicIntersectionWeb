@@ -9,12 +9,23 @@ public partial class Index : ComponentBase
 {
     private Cubic Cubic1 { get; set; }
     private Cubic Cubic2 { get; set; }
+    private bool AreColliding { get; set; }
+    private double VolumeIntercept { get; set; }
 
     public Index()
     {
-        var dimension = new Dimension(1, 1, 1);
-        Cubic1 = new Cubic(dimension, new Center(1, 1, 0));
-        Cubic2 = new Cubic(dimension, new Center(-1, 1, 0));
+        Cubic1 = new Cubic(new Dimension(1, 1, 1), new Center(1, 1, 0));
+        Cubic2 = new Cubic(new Dimension(1, 1, 1), new Center(-1, 1, 0));
+    }
+
+    private async Task GetInterception()
+    {
+        var a = await Interceptor.GetIntersection(Cubic1, Cubic2);
+
+        AreColliding = a.Item1;
+        VolumeIntercept = a.Item2;
+        Console.WriteLine(AreColliding);
+        Console.WriteLine(VolumeIntercept);
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
