@@ -19,4 +19,10 @@
         <None Include="wwwroot\cube.js" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="Pages\Index.cs">
+        <DependentUpon>Index.razor</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>
