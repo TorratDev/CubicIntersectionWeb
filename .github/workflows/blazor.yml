@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -12,13 +12,15 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 7.0.x
       - name: Install dependencies
         run: dotnet restore
       - name: Build the project
         run: dotnet publish -c Release -o ./publish
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.2
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: gh-pages
-          folder: ./publish/wwwroot
+          personal_token: ${{ secrets.PTA }}
+          publish_dir: ./publish/wwwroot
+          publish_branch: gh-pages
+          commit_message: "Update Blazor Web"
