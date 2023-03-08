@@ -43,7 +43,7 @@ function setup(cubic, cubic2) {
     const wireframeGeometry2 = new THREE.EdgesGeometry(geometry2);
     cube2 = new THREE.LineSegments(wireframeGeometry2, wireframeMaterial2);
     cube2.computeLineDistances();
-    cube2.position.set(-cubic2.center.x, cubic2.center.y, cubic2.center.z);
+    cube2.position.set(cubic2.center.x, cubic2.center.y, cubic2.center.z);
     scene.add(cube2);
 
     function animate() {
@@ -93,7 +93,7 @@ function updateCube(cubic, cubic2) {
         cube1.scale.set(newSizeX, newSizeY, newSizeZ);
         cube2.scale.set(newSize2X, newSize2Y, newSize2Z);
         cube1.position.set(newX, newY, newZ);
-        cube2.position.set(-new2X, -new2Y, -new2Z);
+        cube2.position.set(new2X, new2Y, new2Z);
 
         if (progress < 1) {
             requestAnimationFrame(animate);

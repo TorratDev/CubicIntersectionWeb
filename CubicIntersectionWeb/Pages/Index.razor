@@ -1,40 +1,73 @@
 ﻿@inject IJSRuntime JsRuntime
 @page "/"
 
-<PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
-<div class="grid-container">
-    <div class="grid-item">
-        <input type="range" @bind-value="@Cubic1.Dimension.X" min="1" max="10"/>
-        <br/>
-        <input type="range" @bind-value="@Cubic1.Dimension.Y" min="1" max="10"/>
-        <br/>
-        <input type="range" @bind-value="@Cubic1.Dimension.Z" min="1" max="10"/>
-        <br/>
-        <input type="range" @bind-value="@Cubic1.Center.X" min="-5" max="5"/>
-        <br/>
-        <input type="range" @bind-value="@Cubic1.Center.Y" min="-5" max="5"/>
-        <br/>
-        <input type="range" @bind-value="@Cubic1.Center.Z" min="-5" max="5"/>
-        <br/>
-    </div>
-    <div class="grid-item">
-        <input type="range" @bind-value="@Cubic2.Dimension.X" min="1" max="10"/>
-        <br/>
-        <input type="range" @bind-value="@Cubic2.Dimension.Y" min="1" max="10"/>
-        <br/>
-        <input type="range" @bind-value="@Cubic2.Dimension.Z" min="1" max="10"/>
-        <br/>
-        <input type="range" @bind-value="@Cubic2.Center.X" min="-5" max="5"/>
-        <br/>
-        <input type="range" @bind-value="@Cubic2.Center.Y" min="-5" max="5"/>
-        <br/>
-        <input type="range" @bind-value="@Cubic2.Center.Z" min="-5" max="5"/>
-        <br/>
+<div class="d-flex flex-column">
+    <div class="d-flex flex-row justify-content-center">
+        <div class="flex-column justify-content-center">
+            <div class="flex-column justify-content-center">
+                <span>Dimensions</span>
+            </div>
+            <div class="flex-column justify-content-center">
+                <label>X</label>
+                <input type="range" @bind-value="@Cubic1.Dimension.X" min="1" max="10"/>
+                <br/>
+                <label>Y</label>
+                <input type="range" @bind-value="@Cubic1.Dimension.Y" min="1" max="10"/>
+                <br/>
+                <label>Z</label>
+                <input type="range" @bind-value="@Cubic1.Dimension.Z" min="1" max="10"/>
+            </div>
+        </div>
+        <div class="flex-column justify-content-center">
+            <div class="flex-column justify-content-center">
+                <span>Center</span>
+            </div>
+            <div class="flex-column justify-content-center">
+                <label>X</label>
+                <input type="range" @bind-value="@Cubic1.Center.X" min="-5" max="5"/>
+                <br/>
+                <label>Y</label>
+                <input type="range" @bind-value="@Cubic1.Center.Y" min="-5" max="5"/>
+                <br/>
+                <label>Z</label>
+                <input type="range" @bind-value="@Cubic1.Center.Z" min="-5" max="5"/>
+                <br/>
+            </div>
+        </div>
+        <div class="flex-row justify-content-center">
+            <div class="flex-column justify-content-center">
+                <span>Dimensions</span>
+            </div>
+            <div class="flex-column justify-content-center">
+                <div class="flex-column justify-content-center">
+                    <label>X</label>
+                    <input type="range" @bind-value="@Cubic2.Dimension.X" min="1" max="10"/>
+                    <br/>
+                    <label>Y</label>
+                    <input type="range" @bind-value="@Cubic2.Dimension.Y" min="1" max="10"/>
+                    <br/>
+                    <label>Z</label>
+                    <input type="range" @bind-value="@Cubic2.Dimension.Z" min="1" max="10"/>
+                </div>
+            </div>
+        </div>
+        <div class="flex-column justify-content-center">
+            <div class="flex-column justify-content-center">
+                <span>Center</span>
+            </div>
+            <div class="flex-column justify-content-center">
+                <label>X</label>
+                <input type="range" @bind-value="@Cubic2.Center.X" min="-5" max="5"/>
+                <br/>
+                <label>Y</label>
+                <input type="range" @bind-value="@Cubic2.Center.Y" min="-5" max="5"/>
+                <br/>
+                <label>Z</label>
+                <input type="range" @bind-value="@Cubic2.Center.Z" min="-5" max="5"/>
+                <br/>
+            </div>
+        </div>
     </div>
     <canvas id="myCanvas"></canvas>
 </div>

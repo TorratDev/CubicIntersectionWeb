@@ -2,10 +2,10 @@ namespace CubicIntersectionWeb.Pages;
 
 public sealed class Cubic
 {
-    public Cubic()
+    public Cubic(Dimension dimension, Center center)
     {
-        Dimension = new Dimension();
-        Center = new Center();
+        Dimension = dimension;
+        Center = center;
     }
 
     public Dimension Dimension { get; set; }
@@ -19,11 +19,11 @@ public sealed class Cubic
 
 public sealed class Dimension
 {
-    public Dimension()
+    public Dimension(double x, double y, double z)
     {
-        X = 1;
-        Y = 1;
-        Z = 1;
+        X = x;
+        Y = y;
+        Z = z;
     }
 
     public double X { get; set; }
@@ -38,11 +38,11 @@ public sealed class Dimension
 
 public sealed class Center
 {
-    public Center()
+    public Center(double x, double y, double z)
     {
-        X = 0.75;
-        Y = 0.75;
-        Z = 0.75;
+        X = x;
+        Y = y;
+        Z = z;
     }
 
     public double X { get; set; }

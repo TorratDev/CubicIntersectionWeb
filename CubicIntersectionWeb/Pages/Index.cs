@@ -12,16 +12,13 @@ public partial class Index : ComponentBase
 
     public Index()
     {
-        Cubic1 = new Cubic();
-        Console.WriteLine(Cubic1);
-
-        Cubic2 = new Cubic();
+        var dimension = new Dimension(1, 1, 1);
+        Cubic1 = new Cubic(dimension, new Center(1, 1, 0));
+        Cubic2 = new Cubic(dimension, new Center(-1, 1, 0));
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        Console.WriteLine(Cubic1);
-        Console.WriteLine(Cubic2);
         if (firstRender)
         {
             await JsRuntime.InvokeVoidAsync("setup", Cubic1, Cubic2);
