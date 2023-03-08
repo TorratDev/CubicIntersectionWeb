@@ -1,6 +1,6 @@
 let renderer, scene, camera, cube1, cube2;
 
-function setup() {
+function setup(size, center, size2, center2) {
     const canvas = document.getElementById("myCanvas");
     renderer = new THREE.WebGLRenderer({canvas});
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -21,8 +21,6 @@ function setup() {
     light.position.set(0, 0, 10);
     scene.add(light);
 
-    const size = 1;
-    const center = 0.75;
     // create a cube geometry
     const geometry = new THREE.BoxGeometry(size, size, size);
     // create a material for the wireframe
@@ -37,9 +35,16 @@ function setup() {
     cube1.position.set(center, center, 0);
     scene.add(cube1);
 
-    cube2 = new THREE.LineSegments(wireframeGeometry, wireframeMaterial);
+    // create a cube geometry
+    const geometry2 = new THREE.BoxGeometry(size2, size2, size2);
+    // create a material for the wireframe
+    const wireframeMaterial2 = new THREE.LineDashedMaterial({color: 0xffaa00, dashSize: 0.1, gapSize: 0.1});
+
+    // create a wireframe geometry for the cube
+    const wireframeGeometry2 = new THREE.EdgesGeometry(geometry2);
+    cube2 = new THREE.LineSegments(wireframeGeometry2, wireframeMaterial2);
     cube2.computeLineDistances();
-    cube2.position.set(-center, center, 0);
+    cube2.position.set(-center2, center2, 0);
     scene.add(cube2);
 
     function animate() {
@@ -50,7 +55,7 @@ function setup() {
     animate();
 }
 
-function updateCube(size, center) {
+function updateCube(size, center, size2, center2) {
     const animationDuration = 500; // in milliseconds
     const startSize = cube1.scale.x;
     const startSize2 = cube2.scale.x;
@@ -67,17 +72,18 @@ function updateCube(size, center) {
         if (startTime === null) {
             startTime = time;
         }
+        
         const elapsedTime = time - startTime;
         const progress = Math.min(elapsedTime / animationDuration, 1);
 
         const newSize = startSize + (size - startSize) * progress;
-        const newSize2 = startSize2 + (size - startSize2) * progress;
+        const newSize2 = startSize2 + (size2 - startSize2) * progress;
         const newX = centerX + (center - centerX) * progress;
         const newY = centerY + (center - centerY) * progress;
         const newZ = centerZ + (center - centerZ) * progress;
-        const new2X = center2X + (center - center2X) * progress;
-        const new2Y = center2Y + (center - center2Y) * progress;
-        const new2Z = center2Z + (center - center2Z) * progress;
+        const new2X = center2X + (center2 - center2X) * progress;
+        const new2Y = center2Y + (center2 - center2Y) * progress;
+        const new2Z = center2Z + (center2 - center2Z) * progress;
 
         cube1.scale.set(newSize, newSize, newSize);
         cube2.scale.set(newSize2, newSize2, newSize2);

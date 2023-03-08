@@ -2,9 +2,6 @@
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Include="wwwroot\cube.js" />
+        <None Include="wwwroot\cube.js" />
     </ItemGroup>
 
 </Project>

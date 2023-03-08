@@ -1,4 +1,4 @@
-﻿@inject IJSRuntime JSRuntime
+﻿@inject IJSRuntime JsRuntime
 @page "/"
 
 <PageTitle>Index</PageTitle>
@@ -8,30 +8,50 @@
 Welcome to your new app.
 @page "/cube"
 
-<div>
-    <input type="range" @bind-value="@CubeSize" min="1" max="10"/>
-    <br/>
-    <input type="range" @bind-value="@CubeCenter" min="-5" max="5"/>
-    <br/>
+<div class="grid-container">
+    <div class="cube1 grid-item">
+        <input type="range" @bind-value="@CubeSize" min="1" max="10"/>
+        <br/>
+        <input type="range" @bind-value="@CubeCenter" min="-5" max="5"/>
+        <br/>
+    </div>
+    <div class="cube2 grid-item">
+        <input type="range" @bind-value="@CubeSize2" min="1" max="10"/>
+        <br/>
+        <input type="range" @bind-value="@CubeCenter2" min="-5" max="5"/>
+        <br/>
+    </div>
     <canvas id="myCanvas"></canvas>
 </div>
 
 <SurveyPrompt Title="How is Blazor working for you?"/>
 
 @code {
+    private Cubic Cube1 { get; set; }
+    private Cubic Cube2 { get; set; }
+
     private double CubeSize { get; set; } = 1;
+    private double CubeSize2 { get; set; } = 1;
     private double CubeCenter { get; set; } = 0.75;
+    private double CubeCenter2 { get; set; } = 0;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await JSRuntime.InvokeVoidAsync("setup", CubeSize, CubeCenter);
+            await JsRuntime.InvokeVoidAsync("setup", CubeSize, CubeCenter, CubeSize2, CubeCenter2);
         }
         else
         {
-            await JSRuntime.InvokeVoidAsync("updateCube", CubeSize, CubeCenter);
+            await JsRuntime.InvokeVoidAsync("updateCube", CubeSize, CubeCenter, CubeSize2, CubeCenter2);
         }
     }
+
+    public sealed record Cubic(Dimensions Dimensions, Center Center);
+
+    public record Dimensions(double X, double Y, double Z);
+
+    public sealed record Center(double X, double Y, double Z);
+
 
 }
