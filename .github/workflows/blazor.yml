@@ -21,7 +21,9 @@ jobs:
       - name: Build the project
         run: dotnet publish -c Release -o ./publish
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.2
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: gh-pages
-          folder: ./publish/wwwroot
+          personal_token: ${{ secrets.PTA }}
+          publish_dir: ./publish/wwwroot
+          publish_branch: gh-pages
+          commit_message: "Update Blazor Web"
