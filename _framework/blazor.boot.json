@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "CubicIntersectionWeb.dll": "sha256-hG2f8o8zfqp0vUwS8fP1OYGeqT\/awKWRTj32B2nfgE8=",
+      "CubicIntersectionWeb.dll": "sha256-dy6gfUFtrEji9pSutktXCRN+hvM8rCj1R2MvwiAG0\/s=",
       "Microsoft.AspNetCore.Components.dll": "sha256-sqhFyvXNB3Oi4OYRmQNC\/K5+9m5MAVGnvJazgc7egNo=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-jSEc6w1lUN8bup\/iXTVCIBk1vB+bHUZ\/WLq59QvXE1g=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-jD1ZuG+9pTlwFYjlR\/gkmcRiBQn5inZKA1eG9qTTeYw=",

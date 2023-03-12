@@ -15,11 +15,6 @@ function setup(cubic, cubic2) {
     );
     camera.position.z = 5;
 
-    // create a light to illuminate the scene
-    const light = new THREE.DirectionalLight(0xffffff, 1);
-    light.position.set(0, 0, 10);
-    scene.add(light);
-
     // create a cube geometry
     const geometry = new THREE.BoxGeometry(cubic.dimension.x, cubic.dimension.y, cubic.dimension.z);
     // create a material for the wireframe
@@ -46,9 +41,28 @@ function setup(cubic, cubic2) {
     cube2.position.set(cubic2.center.x, cubic2.center.y, cubic2.center.z);
     scene.add(cube2);
 
-    function animate() {
-        requestAnimationFrame(animate);
+    function resizeRendererToDisplaySize(renderer) {
+        const canvas = renderer.domElement;
+        const pixelRatio = window.devicePixelRatio;
+        const width = canvas.clientWidth * pixelRatio | 0;
+        const height = canvas.clientHeight * pixelRatio | 0;
+        const needResize = canvas.width !== width || canvas.height !== height;
+        if (needResize) {
+            renderer.setSize(width, height, false);
+        }
+        return needResize;
+    }
+
+    function animate(time) {
+        time *= 0.001;
+
+        if (resizeRendererToDisplaySize(renderer)) {
+            const canvas = renderer.domElement;
+            camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            camera.updateProjectionMatrix();
+        }
         renderer.render(scene, camera);
+        requestAnimationFrame(animate);
     }
 
     animate();
@@ -74,7 +88,7 @@ function updateCube(cubic, cubic2) {
 
         // console.log(cubic.dimension.x)
         // console.log(cubic2.center.x)
-        
+
         const elapsedTime = time - startTime;
         const progress = Math.min(elapsedTime / animationDuration, 1);
         const newSizeX = startSize + (cubic.dimension.x - startSize) * progress;
